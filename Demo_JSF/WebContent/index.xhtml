@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sy="http://xmlns.jcp.org/jsf/composite/com/sysord/component">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:outputText value="CA MARCHE !" />
+
+	<h:form>
+		<p:dataTable value="#{utilisateurBean.utilisateurs}" var="utilisateur">
+
+			<p:column>
+				<p:inputText value="#{utilisateur.login} AAAAAAAAAAAAA" />
+			</p:column>
+
+			<p:column>
+				<h:outputText value="#{utilisateur.nom}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+	<h:form>
+		<h:panelGrid columns="3">
+
+			<h:outputLabel value="Login:" />
+			<h:inputText id="txtlogin" required="true"
+				value="#{utilisateurBean.selectedUtilisateur.login}"
+				validatorMessage="Valeur obligatoire" />
+			<h:outputText value="#{utilisateurBean.selectedUtilisateur.login}" />
+			<h:outputLabel value="Nom:" />
+			<h:inputText required="true"
+				value="#{utilisateurBean.selectedUtilisateur.nom}" />
+			<h:outputText value="#{utilisateurBean.selectedUtilisateur.nom}" />
+			<h:outputLabel value="Mot de passe:" />
+			<h:inputSecret
+				value="#{utilisateurBean.selectedUtilisateur.motDePasse}" />
+			<h:outputText
+				value="#{utilisateurBean.selectedUtilisateur.motDePasse}" />
+
+			<h:commandButton value="Enregistrer"
+				actionListener="#{utilisateurBean.enregistrer}" />
+			<h:commandButton value="Annuler"
+				actionListener="#{utilisateurBean.annuler}" immediate="true" />
+		</h:panelGrid>
+
+		<p:message for="txtlogin" />
+		<p:messages />
+
+	</h:form>
+
+</h:body>
+
+</html>
